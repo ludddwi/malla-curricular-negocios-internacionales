@@ -1,35 +1,174 @@
-<script type="text/javascript">
-  window.addEventListener("DOMContentLoaded", () => {
-    const ciclos = [
-      // tu array completo aquí
-    ];
 
-    const contenedor = document.getElementById("malla");
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Negocios Internacionales ULima 2025</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #FBFBF9; }
+    .ciclo { margin-top: 30px; }
+    .ciclo-title { font-size: 22px; color: #7A8A7F; }
+    .cursos { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 15px; margin-top: 10px; }
+    .curso { background: #FFFFFF; border-radius: 8px; padding: 12px; cursor: pointer; transition: box-shadow .2s; }
+    .curso:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .detalle { display: none; font-size: 14px; color: #555; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center; color:#5C6B5A;">Negocios Internacionales – ULima 2025</h1>
+  <div id="malla"></div>
 
-    ciclos.forEach(({ciclo, cursos}) => {
-      const div = document.createElement("div");
-      div.className = "ciclo";
-      const titulo = document.createElement("div");
-      titulo.className = "ciclo-title";
-      titulo.textContent = `Ciclo ${ciclo}`;
-      const lista = document.createElement("div");
-      lista.className = "cursos";
+  <script type="text/javascript">
+    window.addEventListener("DOMContentLoaded", () => {
 
-      cursos.forEach(([nombre, creditos, req]) => {
-        const curso = document.createElement("div");
-        curso.className = "curso";
-        curso.innerHTML = `${nombre} (${creditos})<div class="detalle">Prerreq: ${req || "–"}</div>`;
-        curso.onclick = () => {
-          const detalle = curso.querySelector(".detalle");
-          detalle.style.display = detalle.style.display === "block" ? "none" : "block";
-        };
-        lista.appendChild(curso);
+      const ciclos = [
+        {
+          ciclo: 1,
+          cursos: [
+            ["Globalización y Realidad Nacional", 3, ""],
+            ["Lenguaje y Comunicación I", 4, ""],
+            ["Metodologías de Investigación", 3, ""],
+            ["Desarrollo Personal y Social", 3, ""],
+            ["Matemática Básica", 5, ""],
+            ["Matemática para Gestión", 4, "Matemática Aplicada"],
+            ["Relaciones Internacionales", 3, "Procesos Sociales"],
+            ["Contabilidad General", 4, "Matemática Aplicada"]
+          ]
+        },
+        {
+          ciclo: 2,
+          cursos: [
+            ["Economía y Empresa", 3, ""],
+            ["Lenguaje y Comunicación II", 3, "Lenguaje I"],
+            ["Procesos Sociales y Políticos", 3, ""],
+            ["Temas de Filosofía", 3, ""],
+            ["Estadística Básica", 3, "Matemática Básica"],
+            ["Matemática Aplicada a Negocios", 5, "Matemática Básica"]
+          ]
+        },
+        {
+          ciclo: 3,
+          cursos: [
+            ["Estadística para Gestión I", 4, "Estadística Básica"],
+            ["Introduction to International Business", 3, "Economía y Empresa"],
+            ["Cross-Cultural in Business", 3, "Procesos Sociales"],
+            ["Matemática para Gestión", 4, "Matemática Aplicada"],
+            ["Relaciones Internacionales", 3, ""],
+            ["Contabilidad General", 4, ""],
+            ["Herramientas Informáticas I", 3, ""]
+          ]
+        },
+        {
+          ciclo: 4,
+          cursos: [
+            ["Derecho Empresarial", 3, ""],
+            ["Macroeconomía", 3, "Economía y Empresa"],
+            ["Dirección de Empresas", 4, ""],
+            ["Estadística para Gestión II", 4, "Estadística para Gestión I"],
+            ["Finanzas Corporativas", 4, "Contabilidad General"],
+            ["Marketing", 3, ""],
+            ["Inglés I", 2, ""]
+          ]
+        },
+        {
+          ciclo: 5,
+          cursos: [
+            ["Costos y Presupuestos", 3, "Contabilidad General"],
+            ["Gestión del Talento Humano", 3, ""],
+            ["Operaciones y Procesos", 3, ""],
+            ["Negocios Internacionales I", 3, "Introduction to IB"],
+            ["Comercio Exterior I", 3, "Relaciones Internacionales"],
+            ["Logística", 3, ""],
+            ["Inglés II", 2, "Inglés I"]
+          ]
+        },
+        {
+          ciclo: 6,
+          cursos: [
+            ["Comercio Exterior II", 3, "Comercio Exterior I"],
+            ["Negocios Internacionales II", 3, "Negocios Internacionales I"],
+            ["Finanzas Internacionales", 3, "Finanzas Corporativas"],
+            ["Marketing Internacional", 3, "Marketing"],
+            ["Gestión Aduanera", 3, "Comercio Exterior I"],
+            ["Electivo I", 3, ""],
+            ["Inglés III", 2, "Inglés II"]
+          ]
+        },
+        {
+          ciclo: 7,
+          cursos: [
+            ["Inteligencia Comercial", 3, "Marketing Internacional"],
+            ["Estrategias de Internacionalización", 3, "Negocios Internacionales II"],
+            ["Negociaciones Internacionales", 3, "Cross-Cultural in Business"],
+            ["Ética y RSE", 3, ""],
+            ["Gestión de la Innovación", 3, ""],
+            ["Electivo II", 3, ""],
+            ["Inglés IV", 2, "Inglés III"]
+          ]
+        },
+        {
+          ciclo: 8,
+          cursos: [
+            ["Dirección Estratégica", 3, "Dirección de Empresas"],
+            ["Geopolítica y Entorno Internacional", 3, "Relaciones Internacionales"],
+            ["Gestión de Proyectos", 3, ""],
+            ["Transformación Digital", 3, ""],
+            ["Electivo III", 3, ""],
+            ["Electivo IV", 3, ""],
+            ["Inglés V", 2, "Inglés IV"]
+          ]
+        },
+        {
+          ciclo: 9,
+          cursos: [
+            ["Seminario de Investigación I", 3, "Metodologías de Investigación"],
+            ["Electivo V", 3, ""],
+            ["Electivo VI", 3, ""],
+            ["Electivo VII", 3, ""],
+            ["Electivo VIII", 3, ""],
+            ["Inglés VI", 2, "Inglés V"]
+          ]
+        },
+        {
+          ciclo: 10,
+          cursos: [
+            ["Seminario de Investigación II", 3, "Seminario de Investigación I"],
+            ["Electivo IX", 3, ""],
+            ["Electivo X", 3, ""],
+            ["Electivo XI", 3, ""],
+            ["Electivo XII", 3, ""],
+            ["Inglés VII", 2, "Inglés VI"]
+          ]
+        }
+      ];
+
+      const contenedor = document.getElementById("malla");
+
+      ciclos.forEach(({ciclo, cursos}) => {
+        const div = document.createElement("div");
+        div.className = "ciclo";
+        const titulo = document.createElement("div");
+        titulo.className = "ciclo-title";
+        titulo.textContent = `Ciclo ${ciclo}`;
+        const lista = document.createElement("div");
+        lista.className = "cursos";
+
+        cursos.forEach(([nombre, creditos, req]) => {
+          const curso = document.createElement("div");
+          curso.className = "curso";
+          curso.innerHTML = `${nombre} (${creditos})<div class="detalle">Prerreq: ${req || "–"}</div>`;
+          curso.onclick = () => {
+            const detalle = curso.querySelector(".detalle");
+            detalle.style.display = detalle.style.display === "block" ? "none" : "block";
+          };
+          lista.appendChild(curso);
+        });
+
+        div.appendChild(titulo);
+        div.appendChild(lista);
+        contenedor.appendChild(div);
       });
-
-      div.appendChild(titulo);
-      div.appendChild(lista);
-      contenedor.appendChild(div);
     });
-  });
-</script>
-
+  </script>
+</body>
+</html>
